@@ -29,14 +29,31 @@ void diamond(int n) {
     }
 }
 
+int factorial(int n)
+{
+  return (n == 1 || n == 0) ? 1 : factorial(n - 1) * n;
+}
+
 int main(){
     int n;
     cin >> n;
 
-    for (int i = 0; i < n; i++) {
-        for (int i = 0; i < n - i; i++) {
-            cout << " ";
-        }
-
+    if(n>INT_MAX) {
+        cout << -1;
     }
+
+    long long rev = 0;
+    while (n > 0)
+    {
+        int last = n % 10;
+        rev = rev * 10 + last;
+        n /= 10;
+    }
+
+    if(rev > INT_MAX) {
+        cout << -1;
+    }else{
+        cout << rev;
+    }
+
 }
